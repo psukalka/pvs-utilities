@@ -17,3 +17,4 @@ class Player():
             'y': y
         }
         self.client.publish(self.channel, json.dumps(message))
+        print(f"Player {self.id} sent message: {x}, {y}")
