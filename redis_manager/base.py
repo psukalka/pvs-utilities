@@ -10,6 +10,11 @@ class RedisManager():
         pool = redis.ConnectionPool(host='localhost', port=6379, db=0)
         client = redis.Redis(connection_pool=pool)
         return client
+    
+    @staticmethod
+    def get_pubsub():
+        client = RedisManager.get_client()
+        return client.pubsub()
 
     def add_data(self, data):
         for k, v in data.items():
