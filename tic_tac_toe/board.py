@@ -1,3 +1,4 @@
+import json
 from redis_manager import RedisManager
 
 # Consumer
@@ -26,4 +27,6 @@ class Board():
     
     def get_move(self):
         message = self.pubsub.get_message()
-        print(message)
+        if message:
+            message = json.loads(message)
+            print(message)
