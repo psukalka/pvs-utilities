@@ -20,7 +20,7 @@ class Board():
         for row in self.board:
             row_view = f"|"
             for m in row:
-                row_view = f"{row_view}|{m}|"
+                row_view = f"{row_view}{m}|"
             print(row_view)
             print("-"*9)
     

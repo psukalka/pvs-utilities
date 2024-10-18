@@ -14,7 +14,7 @@ class RedisManager():
     @staticmethod
     def get_pubsub():
         client = RedisManager.get_client()
-        return client.pubsub()
+        return client.pubsub(ignore_subscribe_messages=True)
 
     def add_data(self, data):
         for k, v in data.items():
