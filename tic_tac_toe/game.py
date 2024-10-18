@@ -7,5 +7,5 @@ class Game():
         self.player1 = Player(0)
         self.player2 = Player(1)
 
-    def play():
+    def play(self):
         print("Welcome to tic tac toe")

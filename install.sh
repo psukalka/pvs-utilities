@@ -14,5 +14,6 @@ sudo yum install python-pip -y
 python3 -m venv db-test-env
 
 # Install packages
+# git clone https://github.com/psukalka/pvs-db-testing.git
 # cd pvs-db-testing
 # pip install -r requirements.txt
