@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from tic_tac_toe.board import Board
 from tic_tac_toe.player import Player
 import time
