@@ -1,0 +1,2 @@
+class CockroachManager:
+    pass
