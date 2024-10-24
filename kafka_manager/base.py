@@ -1,0 +1,2 @@
+class KafkaManager:
+    pass
