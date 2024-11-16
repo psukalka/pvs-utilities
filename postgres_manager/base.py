@@ -26,7 +26,7 @@ class PostgresManager:
         cursor = self.client.cursor()
         cursor.execute(query)
         return cursor.fetchall()
-
+ 
     def add_data(self):
         # Insert random 1000 records into employees table
         # Age should be between 20 and 60
