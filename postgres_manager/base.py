@@ -16,9 +16,15 @@ class PostgresManager:
         )
         return client
 
-    def get_data(self):
+    def get_data(self, query=None):
+        """
+        Sample queries:
+        SELECT * FROM employees WHERE id < 100 ORDER BY age;
+        """
+        if query is None:
+            query = "SELECT * FROM employees"
         cursor = self.client.cursor()
-        cursor.execute("SELECT * FROM employees")
+        cursor.execute(query)
         return cursor.fetchall()
 
     def add_data(self):
