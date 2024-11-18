@@ -14,7 +14,7 @@ CREATE TABLE employees_partitioned(
     PRIMARY KEY (id, age)
 ) PARTITION BY RANGE (age);
 
-CREATE TABLE employees_junior PARTITION OF employees_partitioned
+CREATE TABLE employees_young PARTITION OF employees_partitioned
     FOR VALUES FROM (20) TO (30);
 
 CREATE TABLE employees_middle PARTITION OF employees_partitioned
