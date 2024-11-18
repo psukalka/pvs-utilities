@@ -12,4 +12,5 @@ Whenever anything needs to be tested that can easily be deployed on EC2 and test
 Sample where pg_test is the container and my_db.dump is the file to be copied 
 
 `docker cp pg_test:/my_db.dump /home/ec2-user/my_db.dump`
+
 `docker cp /home/ec2-user/my_db.dump pg_backup:/my_db.dump`
