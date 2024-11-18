@@ -45,4 +45,3 @@ BEGIN;
     
     -- If everything looks good
 COMMIT;
-
