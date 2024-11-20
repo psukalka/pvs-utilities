@@ -1,5 +1,3 @@
-# docker-compose.yml
-version: '3.8'
 services:
   mongodb:
     image: mongo:latest
@@ -14,6 +12,18 @@ services:
       - mongodb_config:/data/configdb
     command: mongod --auth  # Enable authentication
 
+  postgresql:
+    image: postgres:latest
+    container_name: pg_test
+    environment:
+      POSTGRES_PASSWORD: pvs123
+    ports:
+      - "5432:5432"
+    volumes:
+      - my_pg_data
+    
+
 volumes:
+  my_pg_data:
   mongodb_data:
   mongodb_config:
