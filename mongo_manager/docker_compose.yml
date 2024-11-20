@@ -1,0 +1,18 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pvs123
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    command: mongod --auth  # Enable authentication
+
+volumes:
+  mongodb_data:
+  mongodb_config:

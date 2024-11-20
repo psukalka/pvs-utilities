@@ -14,3 +14,11 @@ Sample where pg_test is the container and my_db.dump is the file to be copied
 `docker cp pg_test:/my_db.dump /home/ec2-user/my_db.dump`
 
 `docker cp /home/ec2-user/my_db.dump pg_backup:/my_db.dump`
+
+
+## Volumes are easy way to share / persist data across containers
+`docker volume create my_db_data`
+
+Use this while creating container
+`docker run -d --name pg_test -v my_db_data:/var/lib/postgresql/data -e POSTGRES_PASSWORD=pvs123 -p 5432:5432 postgres:latest`
+
