@@ -4,17 +4,17 @@ import string
 
 class PostgresManager:
     def __init__(self) -> None:
-        self.client = PostgresManager.get_client()
+        self.client = PostgresManager.get_connection()
 
     @staticmethod
-    def get_client():
-        client = psycopg2.connect(
+    def get_connection():
+        connection = psycopg2.connect(
             host="localhost",
             database="postgres",
             user="postgres",
             password="pvs123"
         )
-        return client
+        return connection
 
     def get_data(self, query=None):
         """
