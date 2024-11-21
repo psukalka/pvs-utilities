@@ -9,7 +9,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - mongo_manager/init.js:/docker-entrypoint-initdb.d/init.js:ro
+      - ./mongo_manager/init.js:/docker-entrypoint-initdb.d/init.js:ro
       - mongodb_data:/data/db
       - mongodb_config:/data/configdb
     command: mongod --auth  # Enable authentication
