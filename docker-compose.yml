@@ -3,11 +3,13 @@ services:
     image: mongo:latest
     container_name: mongo-test
     environment:
+      MONGO_INITDB_DATABASE: test
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27017:27017"
     volumes:
+      - mongo_manager/init.js:/docker-entrypoint-initdb.d/init.js:ro
       - mongodb_data:/data/db
       - mongodb_config:/data/configdb
     command: mongod --auth  # Enable authentication
