@@ -10,9 +10,10 @@ services:
       - "27017:27017"
     volumes:
       - ./mongo_manager/init.js:/docker-entrypoint-initdb.d/init.js:ro
+      - ./mongo_manager/mongo_shard.sh:/data/mongo-keyfile:ro # Add keyfile volume
       - mongodb_data:/data/db
       - mongodb_config:/data/configdb
-    command: mongod --auth  --replSet rs0 --bind_ip_all  # Added replSet and bind_ip_all
+    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all  # Added replSet and bind_ip_all
 
   postgresql:
     image: postgres:latest
