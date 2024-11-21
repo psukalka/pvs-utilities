@@ -12,7 +12,7 @@ services:
       - ./mongo_manager/init.js:/docker-entrypoint-initdb.d/init.js:ro
       - mongodb_data:/data/db
       - mongodb_config:/data/configdb
-    command: mongod --auth  # Enable authentication
+    command: mongod --auth  --replSet rs0 --bind_ip_all  # Added replSet and bind_ip_all
 
   postgresql:
     image: postgres:latest
