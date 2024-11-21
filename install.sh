@@ -20,6 +20,7 @@ docker-compose --version
 # Generate a keyfile with appropriate permissions
 openssl rand -base64 756 > mongo-keyfile
 chmod 400 mongo-keyfile
+sudo chown 999:999 mongo-keyfile
 
 # Make venv
 python3 -m venv db-test-env
