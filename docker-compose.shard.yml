@@ -1,115 +1,115 @@
 services:
   s1n1:
-    image: mongo:latest
+    image: mongodb/mongodb-community-server
     container_name: s1n1
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
+      MONGODB_INITDB_ROOT_USERNAME: admin
+      MONGODB_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27017:27017"
     volumes:
       - ./../mongo-keyfile:/data/mongo-keyfile
       - s1n1_data:/data/db
-    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
+    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
 
   s1n2:
-    image: mongo:latest
+    image: mongodb/mongodb-community-server
     container_name: s1n2
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
+      MONGODB_INITDB_ROOT_USERNAME: admin
+      MONGODB_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27012:27017"
     volumes:
       - ./../mongo-keyfile:/data/mongo-keyfile
       - s1n2_data:/data/db
-    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
+    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
   
   s1n3:
-    image: mongo:latest
+    image: mongodb/mongodb-community-server
     container_name: s1n3
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
+      MONGODB_INITDB_ROOT_USERNAME: admin
+      MONGODB_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27013:27017"
     volumes:
       - ./../mongo-keyfile:/data/mongo-keyfile
       - s1n3_data:/data/db
-    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
+    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
 
   s2n1:
-    image: mongo:latest
+    image: mongodb/mongodb-community-server
     container_name: s2n1
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
+      MONGODB_INITDB_ROOT_USERNAME: admin
+      MONGODB_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27021:27017"
     volumes:
       - ./../mongo-keyfile:/data/mongo-keyfile
       - s2n1_data:/data/db
-    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all
+    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all --shardsvr
   
   s2n2:
-    image: mongo:latest
+    image: mongodb/mongodb-community-server
     container_name: s2n2
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
+      MONGODB_INITDB_ROOT_USERNAME: admin
+      MONGODB_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27022:27017"
     volumes:
       - ./../mongo-keyfile:/data/mongo-keyfile
       - s2n2_data:/data/db
-    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all
+    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all --shardsvr
   
   s2n3:
-    image: mongo:latest
+    image: mongodb/mongodb-community-server
     container_name: s2n3
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
+      MONGODB_INITDB_ROOT_USERNAME: admin
+      MONGODB_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27023:27017"
     volumes:
       - s2n3_data:/data/db
       - ./../mongo-keyfile:/data/mongo-keyfile
-    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all
+    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all --shardsvr
 
   cs1:
-    image: mongo:latest
+    image: mongodb/mongodb-community-server
     container_name: cs1
     ports:
       - "27031:27017"
     volumes:
       - cs1_data:/data/db"
-    command: mongod --port 27017 --replSet config_rs --configsvr
+    command: mongod --port 27017 --replSet config_rs --configsvr --bind_ip_all
   
   cs2:
-    image: mongo:latest
+    image: mongodb/mongodb-community-server
     container_name: cs2
     ports:
       - "27032:27017"
     volumes:
       - cs2_data:/data/db
-    command: mongod --port 27017 --replSet config_rs --configsvr
+    command: mongod --port 27017 --replSet config_rs --configsvr --bind_ip_all
 
   cs3:
-    image: mongo:latest
+    image: mongodb/mongodb-community-server
     container_name: cs3
     ports:
       - "27033:27017"
     volumes:
       - cs3_data:/data/db
-    command: mongod --port 27017 --replSet config_rs --configsvr
+    command: mongod --port 27017 --replSet config_rs --configsvr --bind_ip_all
   
   mongo_router:
-    image: mongo:latest
+    image: mongodb/mongodb-community-server
     container_name: mongo_router
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
+      MONGODB_INITDB_ROOT_USERNAME: admin
+      MONGODB_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27041:27017"
     volumes:
