@@ -12,5 +12,34 @@ services:
       - s1n1_data:/data/db
     command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
 
+  s1n2:
+    image: mongo:latest
+    container_name: s1n2
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pvs123
+    ports:
+      - "27012:27017"
+    volumes:
+      - ./../mongo-keyfile:/data/mongo-keyfile
+      - s1n2_data:/data/db
+    command: mongod --auth --keyfile /data/mongo-keyfile --replSet rs0 --bind_ip_all
+  
+  s1n3:
+    image: mongo:latest
+    container_name: s1n3
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pvs123
+    ports:
+      - "27013:27017"
+    volumes:
+      - ./../mongo-keyfile:/data/mongo-keyfile
+      - s1n3_data:/data/db
+    command: mongod --auth --keyfile /data/mongo-keyfile --replSet rs0 --bind_ip_all
+
+
 volumes:
   s1n1_data:
+  s1n2_data:
+  s1n3_data:
