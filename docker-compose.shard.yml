@@ -10,7 +10,7 @@ services:
     volumes:
       - ./../mongo-keyfile:/data/mongo-keyfile
       - s1n1_data:/data/db
-    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
+    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
 
   s1n2:
     image: mongodb/mongodb-community-server
@@ -23,7 +23,7 @@ services:
     volumes:
       - ./../mongo-keyfile:/data/mongo-keyfile
       - s1n2_data:/data/db
-    command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
+    command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
   
   s1n3:
     image: mongodb/mongodb-community-server
@@ -36,7 +36,7 @@ services:
     volumes:
       - ./../mongo-keyfile:/data/mongo-keyfile
       - s1n3_data:/data/db
-    command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
+    command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
 
   s2n1:
     image: mongodb/mongodb-community-server
