@@ -9,6 +9,7 @@ services:
       - "27017:27017"
     volumes:
       - s1n1_data:/data/db
+    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
 
 volumes:
   s1n1_data:
