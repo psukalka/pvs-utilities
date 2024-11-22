@@ -11,7 +11,7 @@ services:
       - ./../mongo-keyfile:/data/mongo-keyfile:ro
       - s1n1_data:/data/db
     user: "999:999"
-    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
+    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
 
   s1n2:
     image: mongodb/mongodb-community-server
@@ -24,7 +24,7 @@ services:
     volumes:
       - ./../mongo-keyfile:/data/mongo-keyfile
       - s1n2_data:/data/db
-    command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
+    command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
   
   s1n3:
     image: mongodb/mongodb-community-server
@@ -37,7 +37,7 @@ services:
     volumes:
       - ./../mongo-keyfile:/data/mongo-keyfile
       - s1n3_data:/data/db
-    command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
+    command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
 
   s2n1:
     image: mongodb/mongodb-community-server
