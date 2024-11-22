@@ -1,6 +1,6 @@
 services:
   s1n1:
-    image: mongodb/mongodb-community-server
+    image: mongo:latest
     container_name: s1n1
     environment:
       MONGODB_INITDB_ROOT_USERNAME: admin
@@ -14,7 +14,7 @@ services:
     command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
 
   s1n2:
-    image: mongodb/mongodb-community-server
+    image: mongo:latest
     container_name: s1n2
     environment:
       MONGODB_INITDB_ROOT_USERNAME: admin
@@ -27,7 +27,7 @@ services:
     command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
   
   s1n3:
-    image: mongodb/mongodb-community-server
+    image: mongo:latest
     container_name: s1n3
     environment:
       MONGODB_INITDB_ROOT_USERNAME: admin
@@ -40,7 +40,7 @@ services:
     command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all --shardsvr
 
   s2n1:
-    image: mongodb/mongodb-community-server
+    image: mongo:latest
     container_name: s2n1
     environment:
       MONGODB_INITDB_ROOT_USERNAME: admin
@@ -53,7 +53,7 @@ services:
     command: mongod --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all --shardsvr
   
   s2n2:
-    image: mongodb/mongodb-community-server
+    image: mongo:latest
     container_name: s2n2
     environment:
       MONGODB_INITDB_ROOT_USERNAME: admin
@@ -66,7 +66,7 @@ services:
     command: mongod --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all --shardsvr
   
   s2n3:
-    image: mongodb/mongodb-community-server
+    image: mongo:latest
     container_name: s2n3
     environment:
       MONGODB_INITDB_ROOT_USERNAME: admin
@@ -79,7 +79,7 @@ services:
     command: mongod --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all --shardsvr
 
   cs1:
-    image: mongodb/mongodb-community-server
+    image: mongo:latest
     container_name: cs1
     ports:
       - "27031:27017"
@@ -88,7 +88,7 @@ services:
     command: mongod --port 27017 --replSet config_rs --configsvr --bind_ip_all
   
   cs2:
-    image: mongodb/mongodb-community-server
+    image: mongo:latest
     container_name: cs2
     ports:
       - "27032:27017"
@@ -97,7 +97,7 @@ services:
     command: mongod --port 27017 --replSet config_rs --configsvr --bind_ip_all
 
   cs3:
-    image: mongodb/mongodb-community-server
+    image: mongo:latest
     container_name: cs3
     ports:
       - "27033:27017"
@@ -106,7 +106,7 @@ services:
     command: mongod --port 27017 --replSet config_rs --configsvr --bind_ip_all
   
   mongo_router:
-    image: mongodb/mongodb-community-server
+    image: mongo:latest
     container_name: mongo_router
     environment:
       MONGODB_INITDB_ROOT_USERNAME: admin
