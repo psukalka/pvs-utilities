@@ -80,40 +80,28 @@ services:
   cs1:
     image: mongo:latest
     container_name: cs1
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27031:27017"
     volumes:
-      - cs1_data:/data/db
-    user: "999:999"
+      - cs1_data:/data/db"
     command: mongod --port 27017 --replSet config_rs --configsvr
   
   cs2:
     image: mongo:latest
     container_name: cs2
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27032:27017"
     volumes:
       - cs2_data:/data/db
-    user: "999:999"
     command: mongod --port 27017 --replSet config_rs --configsvr
 
   cs3:
     image: mongo:latest
     container_name: cs3
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27033:27017"
     volumes:
       - cs3_data:/data/db
-    user: "999:999"
     command: mongod --port 27017 --replSet config_rs --configsvr
   
   mongo_router:
