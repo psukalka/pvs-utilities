@@ -8,6 +8,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
+      - ./../mongo-keyfile:/data/mongo-keyfile
       - s1n1_data:/data/db
     command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
 
