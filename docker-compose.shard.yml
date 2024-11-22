@@ -87,9 +87,8 @@ services:
       - "27031:27017"
     volumes:
       - cs1_data:/data/db
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
     user: "999:999"
-    command: mongod --port 27017 --replSet config_rs --configsvr --auth --keyFile /data/mongo-keyfile
+    command: mongod --port 27017 --replSet config_rs --configsvr
   
   cs2:
     image: mongo:latest
@@ -101,9 +100,8 @@ services:
       - "27032:27017"
     volumes:
       - cs2_data:/data/db
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
     user: "999:999"
-    command: mongod --port 27017 --replSet config_rs --configsvr --auth --keyFile /data/mongo-keyfile
+    command: mongod --port 27017 --replSet config_rs --configsvr
 
   cs3:
     image: mongo:latest
@@ -115,9 +113,8 @@ services:
       - "27033:27017"
     volumes:
       - cs3_data:/data/db
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
     user: "999:999"
-    command: mongod --port 27017 --replSet config_rs --configsvr --auth --keyFile /data/mongo-keyfile
+    command: mongod --port 27017 --replSet config_rs --configsvr
   
   mongo_router:
     image: mongo:latest
