@@ -1,0 +1,14 @@
+services:
+  s1n1:
+    image: mongo:latest
+    container_name: s1n1
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pvs123
+    ports:
+      - "27017:27017"
+    volumes:
+      - s1n1_data:/data/db
+
+volumes:
+  - s1n1_data:
