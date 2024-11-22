@@ -89,8 +89,8 @@ services:
       - cs1_data:/data/db
       - ./../mongo-keyfile:/data/mongo-keyfile:ro
     user: "999:999"
-    command: mongod --replSet config_rs --configsvr --bind_ip_all
-
+    command: mongod --port 27017 --replSet config_rs --configsvr --auth --keyFile /data/mongo-keyfile
+  
   cs2:
     image: mongo:latest
     container_name: cs2
@@ -103,7 +103,7 @@ services:
       - cs2_data:/data/db
       - ./../mongo-keyfile:/data/mongo-keyfile:ro
     user: "999:999"
-    command: mongod --replSet config_rs --configsvr --bind_ip_all
+    command: mongod --port 27017 --replSet config_rs --configsvr --auth --keyFile /data/mongo-keyfile
 
   cs3:
     image: mongo:latest
@@ -117,7 +117,7 @@ services:
       - cs3_data:/data/db
       - ./../mongo-keyfile:/data/mongo-keyfile:ro
     user: "999:999"
-    command: mongod --replSet config_rs --configsvr --bind_ip_all
+    command: mongod --port 27017 --replSet config_rs --configsvr --auth --keyFile /data/mongo-keyfile
   
   mongo_router:
     image: mongo:latest
