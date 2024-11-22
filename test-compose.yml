@@ -1,0 +1,12 @@
+services:
+  cs1:
+    image: mongo:latest
+    container_name: cs1
+    ports:
+      - "27031:27017"
+    volumes:
+      - cs1_data:/data/db
+    command: mongod --port 27017 --replSet config_rs --configsvr
+
+volumes:
+  cs1_data:
