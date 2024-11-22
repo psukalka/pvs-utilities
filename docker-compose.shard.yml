@@ -72,7 +72,9 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27023:27017"
+    volumes:
       - s2n3_data:/data/db
+      - ./../mongo-keyfile:/data/mongo-keyfile
     command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all
 
 
