@@ -3,8 +3,8 @@ services:
     image: mongo:latest
     container_name: s1n1
     environment:
-      MONGODB_INITDB_ROOT_USERNAME: admin
-      MONGODB_INITDB_ROOT_PASSWORD: pvs123
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27017:27017"
     volumes:
@@ -17,8 +17,8 @@ services:
     image: mongo:latest
     container_name: s1n2
     environment:
-      MONGODB_INITDB_ROOT_USERNAME: admin
-      MONGODB_INITDB_ROOT_PASSWORD: pvs123
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27012:27017"
     volumes:
@@ -30,8 +30,8 @@ services:
     image: mongo:latest
     container_name: s1n3
     environment:
-      MONGODB_INITDB_ROOT_USERNAME: admin
-      MONGODB_INITDB_ROOT_PASSWORD: pvs123
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27013:27017"
     volumes:
@@ -43,8 +43,8 @@ services:
     image: mongo:latest
     container_name: s2n1
     environment:
-      MONGODB_INITDB_ROOT_USERNAME: admin
-      MONGODB_INITDB_ROOT_PASSWORD: pvs123
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27021:27017"
     volumes:
@@ -56,8 +56,8 @@ services:
     image: mongo:latest
     container_name: s2n2
     environment:
-      MONGODB_INITDB_ROOT_USERNAME: admin
-      MONGODB_INITDB_ROOT_PASSWORD: pvs123
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27022:27017"
     volumes:
@@ -69,8 +69,8 @@ services:
     image: mongo:latest
     container_name: s2n3
     environment:
-      MONGODB_INITDB_ROOT_USERNAME: admin
-      MONGODB_INITDB_ROOT_PASSWORD: pvs123
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27023:27017"
     volumes:
@@ -109,8 +109,8 @@ services:
     image: mongo:latest
     container_name: mongo_router
     environment:
-      MONGODB_INITDB_ROOT_USERNAME: admin
-      MONGODB_INITDB_ROOT_PASSWORD: pvs123
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27041:27017"
     volumes:
