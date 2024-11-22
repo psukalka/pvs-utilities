@@ -11,4 +11,4 @@ services:
       - s1n1_data:/data/db
 
 volumes:
-  - s1n1_data:
+  s1n1_data:
