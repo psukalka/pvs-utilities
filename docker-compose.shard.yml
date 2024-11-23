@@ -95,7 +95,7 @@ services:
       - cs1_data:/data/db
       - ./../mongo-keyfile:/data/mongo-keyfile:ro
     user: "999:999"
-    command: mongod --port 27017 --keyFile /data/mongo-keyfile --replSet config_rs --configsvr --bind_ip_all
+    command: mongod --port 27017 --replSet config_rs --keyFile /data/mongo-keyfile --configsvr --bind_ip_all
   
   cs2:
     image: mongo:latest
