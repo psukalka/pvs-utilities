@@ -2,149 +2,96 @@ services:
   s1n1:
     image: mongo:latest
     container_name: s1n1
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27017:27017"
     volumes:
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
       - s1n1_data:/data/db
-    user: "999:999"
-    command: mongod --auth --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
+    command: mongod --replSet rs0 --bind_ip_all
 
   s1n2:
     image: mongo:latest
     container_name: s1n2
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27012:27017"
     volumes:
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
       - s1n2_data:/data/db
-    user: "999:999"
-    command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
+    command: mongod --replSet rs0 --bind_ip_all
   
   s1n3:
     image: mongo:latest
     container_name: s1n3
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27013:27017"
     volumes:
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
       - s1n3_data:/data/db
-    user: "999:999"
-    command: mongod --keyFile /data/mongo-keyfile --replSet rs0 --bind_ip_all
+    command: mongod --replSet rs0 --bind_ip_all
 
   s2n1:
     image: mongo:latest
     container_name: s2n1
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27021:27017"
     volumes:
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
       - s2n1_data:/data/db
-    user: "999:999"
-    command: mongod --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all
+    command: mongod --replSet rs1 --bind_ip_all
   
   s2n2:
     image: mongo:latest
     container_name: s2n2
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27022:27017"
     volumes:
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
       - s2n2_data:/data/db
-    user: "999:999"
-    command: mongod --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all
+    command: mongod --replSet rs1 --bind_ip_all
   
   s2n3:
     image: mongo:latest
     container_name: s2n3
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27023:27017"
     volumes:
       - s2n3_data:/data/db
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
-    user: "999:999"
-    command: mongod --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all
+    command: mongod --replSet rs1 --bind_ip_all
 
   cs1:
     image: mongo:latest
     container_name: cs1
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27031:27017"
     volumes:
       - cs1_data:/data/db
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
-    user: "999:999"
-    command: mongod --port 27017 --replSet config_rs --keyFile /data/mongo-keyfile --configsvr --bind_ip_all
+    command: mongod --port 27017 --replSet config_rs --configsvr --bind_ip_all
   
   cs2:
     image: mongo:latest
     container_name: cs2
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27032:27017"
     volumes:
       - cs2_data:/data/db
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
-    user: "999:999"
-    command: mongod --port 27017 --keyFile /data/mongo-keyfile --replSet config_rs --configsvr --bind_ip_all
+    command: mongod --port 27017 --replSet config_rs --configsvr --bind_ip_all
 
   cs3:
     image: mongo:latest
     container_name: cs3
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27033:27017"
     volumes:
       - cs3_data:/data/db
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
-    user: "999:999"
-    command: mongod --port 27017 --keyFile /data/mongo-keyfile --replSet config_rs --configsvr --bind_ip_all
+    command: mongod --port 27017 --replSet config_rs --configsvr --bind_ip_all
   
   mongo_router:
     image: mongo:latest
     container_name: mongo_router
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27041:27017"
-    volumes:
-      - ./../mongo-keyfile:/data/mongo-keyfile:ro
     depends_on:
       - cs1
       - cs2
       - cs3
       - s1n1
       - s2n1
-    user: "999:999"
     command: mongos --port 27017 --configdb config_rs/cs1:27017,cs2:27017,cs3:27017 --bind_ip_all
-  
-
 
 volumes:
   s1n1_data:
