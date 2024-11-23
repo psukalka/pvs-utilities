@@ -3,7 +3,7 @@ services:
     image: mongo:latest
     container_name: s1n1
     ports:
-      - "27017:27017"
+      - "27017:27018"  # Changed to map 27018
     volumes:
       - s1n1_data:/data/db
     command: mongod --replSet rs0 --shardsvr --bind_ip_all
@@ -12,7 +12,7 @@ services:
     image: mongo:latest
     container_name: s1n2
     ports:
-      - "27012:27017"
+      - "27012:27018"  # Changed to map 27018
     volumes:
       - s1n2_data:/data/db
     command: mongod --replSet rs0 --shardsvr --bind_ip_all
@@ -21,7 +21,7 @@ services:
     image: mongo:latest
     container_name: s1n3
     ports:
-      - "27013:27017"
+      - "27013:27018"  # Changed to map 27018
     volumes:
       - s1n3_data:/data/db
     command: mongod --replSet rs0 --shardsvr --bind_ip_all
@@ -30,7 +30,7 @@ services:
     image: mongo:latest
     container_name: s2n1
     ports:
-      - "27021:27017"
+      - "27021:27018"  # Changed to map 27018
     volumes:
       - s2n1_data:/data/db
     command: mongod --replSet rs1 --shardsvr --bind_ip_all
@@ -39,7 +39,7 @@ services:
     image: mongo:latest
     container_name: s2n2
     ports:
-      - "27022:27017"
+      - "27022:27018"  # Changed to map 27018
     volumes:
       - s2n2_data:/data/db
     command: mongod --replSet rs1 --shardsvr --bind_ip_all
@@ -48,11 +48,12 @@ services:
     image: mongo:latest
     container_name: s2n3
     ports:
-      - "27023:27017"
+      - "27023:27018"  # Changed to map 27018
     volumes:
       - s2n3_data:/data/db
     command: mongod --replSet rs1 --shardsvr --bind_ip_all
 
+  # Config servers stay on 27017 as they use --configsvr
   cs1:
     image: mongo:latest
     container_name: cs1
