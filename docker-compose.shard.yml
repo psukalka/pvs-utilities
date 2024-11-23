@@ -52,7 +52,7 @@ services:
     volumes:
       - ./../mongo-keyfile:/data/mongo-keyfile:ro
       - s2n1_data:/data/db
-      user: "999:999"
+    user: "999:999"
     command: mongod --keyFile /data/mongo-keyfile --replSet rs1 --bind_ip_all
   
   s2n2:
