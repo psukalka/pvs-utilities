@@ -44,3 +44,8 @@ rs.initiate({
 })
 
 #######
+docker exec -it mongo_router mongosh
+
+sh.addShard("rs0/s1n1:27017,s1n2:27017,s1n3:27017")
+sh.addShard("rs1/s2n1:27017,s2n2:27017,s2n3:27017")
+
