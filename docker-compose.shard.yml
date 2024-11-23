@@ -92,7 +92,7 @@ services:
     ports:
       - "27031:27017"
     volumes:
-      - cs1_data:/data/db"
+      - cs1_data:/data/db
       - ./../mongo-keyfile:/data/mongo-keyfile:ro
     user: "999:999"
     command: mongod --port 27017 --keyFile /data/mongo-keyfile --replSet config_rs --configsvr --bind_ip_all
