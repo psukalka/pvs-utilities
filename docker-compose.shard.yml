@@ -108,9 +108,9 @@ services:
   mongo_router:
     image: mongo:latest
     container_name: mongo_router
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: pvs123
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: admin
+    #   MONGO_INITDB_ROOT_PASSWORD: pvs123
     ports:
       - "27041:27017"
     volumes:
@@ -122,7 +122,7 @@ services:
       - s1n1
       - s2n1
     user: "999:999"
-    command: mongos --port 27017 --keyFile /data/mongo-keyfile --configdb config_rs/cs1:27017,cs2:27017,cs3:27017 --bind_ip_all --clusterAuthMode keyFile
+    command: mongos --port 27017 --configdb config_rs/cs1:27017,cs2:27017,cs3:27017 --bind_ip_all
   
 
 
