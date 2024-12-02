@@ -25,7 +25,7 @@ services:
     volumes:
       - cassandra_data2:/var/lib/cassandra
     networks:
-      - cassandra_netework
+      - cassandra_network
 
   cn3:
     image: cassandra:latest
@@ -38,7 +38,7 @@ services:
     volumes:
       - cassandra_data3:/var/lib/cassandra
     networks:
-      - cassandra_netework
+      - cassandra_network
 
   cn4:
     image: cassandra:latest
@@ -51,7 +51,7 @@ services:
     volumes:
       - cassandra_data4:/var/lib/cassandra
     networks:
-      - cassandra_netework
+      - cassandra_network
 
   cn5:
     image: cassandra:latest
@@ -64,7 +64,7 @@ services:
     volumes:
       - cassandra_data5:/var/lib/cassandra
     networks:
-      - cassandra_netework  
+      - cassandra_network  
 
 networks:
   cassandra_network:
