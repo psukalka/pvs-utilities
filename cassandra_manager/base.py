@@ -10,7 +10,7 @@ class CassandraManager:
 
     @staticmethod
     def get_connection():
-        cluster = Cluster(['localhost'])
+        cluster = Cluster(['localhost'], port=9042)
         return cluster
     
     def get_session(self):

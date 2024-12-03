@@ -6,7 +6,7 @@ docker exec -it cn1 cqlsh
 
 # Creating database
 CREATE KEYSPACE my_app 
-WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 2};
+WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
 
 # Use key space
 USE my_app;
