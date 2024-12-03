@@ -5,6 +5,9 @@ services:
     container_name: cn1
     ports:
       - "9042:9042"
+      - "7000:7000"
+      - "7001:7001"
+      - "7199:7199"
     environment:
       - CASSANDRA_CLUSTER_NAME=my_cluster
       - CASSANDRA_SEEDS=cn1
@@ -23,6 +26,13 @@ services:
       - CASSANDRA_SEEDS=cn1
       - CASSANDRA_DC=dc1
       - CASSANDRA_RACK=r1
+    ports:
+      - "7000"
+      - "7001"
+      - "7199"
+    depends_on:
+      cn1:
+        condition: service_healthy
     volumes:
       - cassandra_data2:/var/lib/cassandra
     networks:
@@ -36,6 +46,13 @@ services:
       - CASSANDRA_SEEDS=cn1
       - CASSANDRA_DC=dc1
       - CASSANDRA_RACK=r1
+    ports:
+      - "7000"
+      - "7001"
+      - "7199"
+    depends_on:
+      cn1:
+        condition: service_healthy
     volumes:
       - cassandra_data3:/var/lib/cassandra
     networks:
