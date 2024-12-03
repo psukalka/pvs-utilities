@@ -16,6 +16,18 @@ CREATE TABLE users (
     user_id UUID PRIMARY KEY,
     username text,
     email text,
-    age int,
-    created_at timestamp
+    created_at timestamp,
+    last_login timestamp,
+    is_active boolean
+);
+
+CREATE TABLE posts (
+    post_id UUID,
+    user_id UUID,
+    title text,
+    content text,
+    created_at timestamp,
+    updated_at timestamp,
+    tags set<text>,
+    PRIMARY KEY (post_id)
 );
