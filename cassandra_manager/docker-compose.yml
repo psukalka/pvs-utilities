@@ -22,7 +22,9 @@ services:
     volumes:
       - cassandra_data1:/var/lib/cassandra
     networks:
-      - cassandra_network
+      - cassandra_network:
+        aliases:
+          - cassandra1
 
   cn2:
     image: cassandra:latest
@@ -43,7 +45,9 @@ services:
     volumes:
       - cassandra_data2:/var/lib/cassandra
     networks:
-      - cassandra_network
+      - cassandra_network:
+        aliases:
+          - cassandra2
 
   cn3:
     image: cassandra:latest
@@ -64,11 +68,14 @@ services:
     volumes:
       - cassandra_data3:/var/lib/cassandra
     networks:
-      - cassandra_network
+      - cassandra_network:
+        aliases:
+          - cassandra3
 
 networks:
   cassandra_network:
     driver: bridge
+    name: cassandra_fixed_network
 
 volumes:
   cassandra_data1:
