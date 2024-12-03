@@ -13,6 +13,11 @@ services:
       - CASSANDRA_SEEDS=cn1
       - CASSANDRA_DC=dc1
       - CASSANDRA_RACK=r1
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "describe keyspaces"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
     volumes:
       - cassandra_data1:/var/lib/cassandra
     networks:
