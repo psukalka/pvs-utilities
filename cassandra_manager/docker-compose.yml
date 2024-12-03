@@ -13,6 +13,7 @@ services:
       - CASSANDRA_SEEDS=cn1
       - CASSANDRA_DC=dc1
       - CASSANDRA_RACK=r1
+      - CASSANDRA_INITIAL_TOKEN=0
     healthcheck:
       test: ["CMD", "cqlsh", "-e", "describe keyspaces"]
       interval: 15s
@@ -31,6 +32,7 @@ services:
       - CASSANDRA_SEEDS=cn1
       - CASSANDRA_DC=dc1
       - CASSANDRA_RACK=r1
+      - CASSANDRA_INITIAL_TOKEN=8
     ports:
       - "7000"
       - "7001"
@@ -51,6 +53,7 @@ services:
       - CASSANDRA_SEEDS=cn1
       - CASSANDRA_DC=dc1
       - CASSANDRA_RACK=r1
+      - CASSANDRA_INITIAL_TOKEN=16
     ports:
       - "7000"
       - "7001"
