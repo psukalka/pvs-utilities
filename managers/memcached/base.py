@@ -19,7 +19,7 @@ class MemcachedManager:
             return value, 1
         return json.dumps(value), 2
     
-    def json_deserializer(self, value, flag):
+    def json_deserializer(self, key, value, flag):
         if flag == 1:
             return value.decode('utf-8')
         elif flag == 2:
