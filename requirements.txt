@@ -18,3 +18,4 @@ wcwidth==0.2.13
 psycopg2-binary==2.9.10
 cassandra-driver==3.29.2
 kafka-python==2.0.2
+pymemcache
