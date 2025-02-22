@@ -19,3 +19,4 @@ psycopg2-binary==2.9.10
 cassandra-driver==3.29.2
 kafka-python==2.0.2
 pymemcache==4.0.0
+requests==2.32.3
