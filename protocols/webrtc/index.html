@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple WebRTC Video Call</title>
+    <style>
+        /* Improved styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .videos {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .video-container {
+            position: relative;
+            width: 400px;
+        }
+        .video-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        video {
+            width: 100%;
+            height: 300px;
+            background-color: #333;
+            border-radius: 8px;
+            border: 1px solid #555;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 8px 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #2b71de;
+        }
+        input {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+        .status {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            border-left: 4px solid #4285f4;
+        }
+        .room-info {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #e6f4ea;
+            border-radius: 4px;
+            border-left: 4px solid #34a853;
+        }
+        .hidden {
+            display: none;
+        }
+        .debug-panel {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .debug-panel h3 {
+            margin-top: 0;
+        }
+        .video-status {
+            margin: 10px 0;
+            padding: 5px 10px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple WebRTC Video Call</h1>
+    
+    <div class="status" id="status">Ready to connect</div>
+    
+    <div id="roomControls">
+        <h2>Start or Join a Call</h2>
+        <div>
+            <input type="text" id="roomId" placeholder="Room ID (leave empty to create new room)">
+            <button id="createJoinButton">Create/Join Room</button>
+        </div>
+    </div>
+    
+    <div id="callControls" class="hidden">
+        <div class="videos">
+            <div class="video-container">
+                <div class="video-label">Local Video</div>
+                <video id="localVideo" autoplay muted playsinline></video>
+            </div>
+            <div class="video-container">
+                <div class="video-label">Remote Video</div>
+                <video id="remoteVideo" autoplay playsinline></video>
+            </div>
+        </div>
+        
+        <div class="video-status" id="videoStatus">Waiting for video status...</div>
+        
+        <div class="controls">
+            <button id="refreshVideoButton">Refresh Video</button>
+            <button id="toggleVideoButton">Turn Off Video</button>
+            <button id="toggleAudioButton">Mute Audio</button>
+            <button id="hangupButton">Hang Up</button>
+        </div>
+        
+        <div class="room-info">
+            <p>Share this Room ID with your peer:</p>
+            <div id="currentRoom" style="font-weight: bold; font-size: 20px;"></div>
+        </div>
+        
+        <div class="debug-panel">
+            <h3>Connection Info</h3>
+            <div id="connectionInfo">Not connected</div>
+        </div>
+    </div>
+
+    <!-- Load WebRTC Scripts -->
+    <script src="webrtc-core.js"></script>
+    <script src="webrtc-usage.js"></script>
+</body>
+</html>
