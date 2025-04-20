@@ -1,6 +1,6 @@
 # Give permission to nginx
-sudo chmod -R 755 /var/www/
-sudo chown -R nginx:nginx /var/www/
+sudo chmod -R 755 /usr/share/nginx/html
+sudo chown -R nginx:nginx /usr/share/nginx/html
 
 
 # Test syntax
