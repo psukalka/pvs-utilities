@@ -1,10 +1,10 @@
-# Create directories for our "servers"
-sudo mkdir -p /var/www/server1
-sudo mkdir -p /var/www/server2
-sudo mkdir -p /var/www/server3
+# Create directories in the correct location
+sudo mkdir -p /usr/share/nginx/html/server1
+sudo mkdir -p /usr/share/nginx/html/server2
+sudo mkdir -p /usr/share/nginx/html/server3
 
-# Create a simple HTML file for server1
-sudo bash -c 'cat > /var/www/server1/index.html << EOF
+# Create test HTML files
+sudo bash -c 'cat > /usr/share/nginx/html/server1/index.html << EOF
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +22,7 @@ sudo bash -c 'cat > /var/www/server1/index.html << EOF
 </html>
 EOF'
 
-# Create a simple HTML file for server2
-sudo bash -c 'cat > /var/www/server2/index.html << EOF
+sudo bash -c 'cat > /usr/share/nginx/html/server2/index.html << EOF
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,8 +40,7 @@ sudo bash -c 'cat > /var/www/server2/index.html << EOF
 </html>
 EOF'
 
-# Create a simple HTML file for server3
-sudo bash -c 'cat > /var/www/server3/index.html << EOF
+sudo bash -c 'cat > /usr/share/nginx/html/server3/index.html << EOF
 <!DOCTYPE html>
 <html>
 <head>
