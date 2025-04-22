@@ -1,4 +1,4 @@
 # Install caddy 
-dnf install 'dnf-command(copr)'
-dnf copr enable @caddy/caddy
-dnf install caddy
+sudo dnf install 'dnf-command(copr)'
+sudo dnf copr enable @caddy/caddy
+sudo dnf install caddy
